@@ -9,7 +9,9 @@ import { PrismaModule } from './prisma/prisma.module';
 import { ProductResolver } from './product/product.resolver';
 import { ProductService } from './product/product.service';
 import { ProductModule } from './product/product.module';
-
+import { StockMovementResolver } from './stock-movement/stock-movement.resolver';
+import { StockMovementService } from './stock-movement/stock-movement.service';
+import { StockMovementModule } from './stock-movement/stock-movement.module';
 @Module({
   imports: [
     GraphQLModule.forRoot<ApolloDriverConfig>({
@@ -19,10 +21,11 @@ import { ProductModule } from './product/product.module';
       playground: false,
       plugins: [ApolloServerPluginLandingPageLocalDefault()],
     }),
+    StockMovementModule,
     ProductModule,
     PrismaModule,
   ],
   controllers: [AppController],
-  providers: [AppService, ProductResolver, ProductService],
+  providers: [AppService, ProductResolver, ProductService, StockMovementResolver, StockMovementService],
 })
 export class AppModule {}

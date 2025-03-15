@@ -9,8 +9,16 @@ input CreateProductInput {
   reference: String!
 }
 
+input CreateStockMovement {
+  productId: Float!
+  quantity: Float!
+  type: String!
+  warehouseId: Float!
+}
+
 type Mutation {
   createProduct(data: CreateProductInput!): Product!
+  createStockMovement(data: CreateStockMovement!): Boolean!
   deleteProduct(id: Int!): Product!
   updateProduct(data: UpdateProductInput!, id: Int!): Product!
 }
