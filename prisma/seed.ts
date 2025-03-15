@@ -1,4 +1,5 @@
-import { PrismaClient } from '@prisma/client';
+import { PrismaClient, StockMovementType } from '@prisma/client';
+
 const prisma = new PrismaClient();
 
 async function main() {
@@ -91,12 +92,29 @@ async function main() {
     });
 
     if (product && warehouse) {
-      await prisma.stock.create({
+      // Create stock with quantity 0
+      const stock = await prisma.stock.create({
         data: {
           productId: product.id,
           warehouseId: warehouse.id,
-          quantity: item.stock
+          quantity: 0
         }
+      });
+
+      // Create stock movement of type IN with the assigned quantity
+      await prisma.stockMovement.create({
+        data: {
+          productId: product.id,
+          warehouseId: warehouse.id,
+          quantity: item.stock,
+          type: StockMovementType.IN
+        }
+      });
+
+      // Update stock quantity
+      await prisma.stock.update({
+        where: { id: stock.id },
+        data: { quantity: item.stock }
       });
     }
   }
