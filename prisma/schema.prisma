@@ -39,6 +39,7 @@ model Warehouse {
   updatedAt   DateTime @updatedAt
   stocks      Stock[]
   stockMovements StockMovement[]
+  @@unique([name])
 }
 
 model Stock {
