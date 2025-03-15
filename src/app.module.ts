@@ -8,6 +8,7 @@ import { ApolloServerPluginLandingPageLocalDefault } from '@apollo/server/plugin
 import { PrismaModule } from './prisma/prisma.module';
 import { ProductResolver } from './product/product.resolver';
 import { ProductService } from './product/product.service';
+import { ProductModule } from './product/product.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { ProductService } from './product/product.service';
       playground: false,
       plugins: [ApolloServerPluginLandingPageLocalDefault()],
     }),
+    ProductModule,
     PrismaModule,
   ],
   controllers: [AppController],

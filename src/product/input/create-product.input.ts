@@ -9,7 +9,7 @@ export class CreateProductInput {
 
   @Field({ nullable: true })
   @IsString()
-  description?: string;
+  description: string;
 
   @Field()
   @IsString()

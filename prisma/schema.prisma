@@ -22,7 +22,7 @@ model Product {
   id          Int       @id @default(autoincrement())
   reference   String
   name        String
-  description String?
+  description String
   barcode     String
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt

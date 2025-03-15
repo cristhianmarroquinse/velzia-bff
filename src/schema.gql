@@ -1,0 +1,36 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+input CreateProductInput {
+  barcode: String!
+  description: String
+  name: String!
+  reference: String!
+}
+
+type Mutation {
+  createProduct(data: CreateProductInput!): Product!
+  deleteProduct(id: Int!): Product!
+  updateProduct(data: UpdateProductInput!, id: Int!): Product!
+}
+
+type Product {
+  barcode: String!
+  description: String
+  id: Int!
+  name: String!
+  reference: String!
+}
+
+type Query {
+  getProduct(id: Int!): Product!
+  getProducts: [Product!]!
+}
+
+input UpdateProductInput {
+  barcode: String
+  description: String
+  name: String
+  reference: String
+}

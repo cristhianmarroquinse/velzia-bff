@@ -1,7 +1,7 @@
-import { Field, InputType, Int } from '@nestjs/graphql';
+import { Field, Int, ObjectType } from '@nestjs/graphql';
 import { IsNumber, IsString } from 'class-validator';
 
-@InputType()
+@ObjectType()
 export class Product {
     @IsNumber()
     @Field(() => Int, { nullable: false })
@@ -11,9 +11,9 @@ export class Product {
     @IsString()
     name: string;
 
-    @Field({ nullable: true })
     @IsString()
-    description: string | null;
+    @Field({ nullable: true })
+    description: string;
 
     @Field()
     @IsString()
