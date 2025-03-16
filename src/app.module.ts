@@ -12,6 +12,9 @@ import { ProductModule } from './product/product.module';
 import { StockMovementResolver } from './stock-movement/stock-movement.resolver';
 import { StockMovementService } from './stock-movement/stock-movement.service';
 import { StockMovementModule } from './stock-movement/stock-movement.module';
+import { WarehouseResolver } from './warehouse/warehouse.resolver';
+import { WarehouseService } from './warehouse/warehouse.service';
+import { WarehouseModule } from './warehouse/warehouse.module';
 @Module({
   imports: [
     GraphQLModule.forRoot<ApolloDriverConfig>({
@@ -24,8 +27,9 @@ import { StockMovementModule } from './stock-movement/stock-movement.module';
     StockMovementModule,
     ProductModule,
     PrismaModule,
+    WarehouseModule,
   ],
   controllers: [AppController],
-  providers: [AppService, ProductResolver, ProductService, StockMovementResolver, StockMovementService],
+  providers: [AppService, ProductResolver, ProductService, StockMovementResolver, StockMovementService, WarehouseResolver, WarehouseService],
 })
 export class AppModule {}

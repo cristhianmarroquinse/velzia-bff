@@ -1,5 +1,6 @@
 import { ObjectType, Field, Int } from '@nestjs/graphql';
-import { Stock } from '../../stock/models/stock.model';
+import { IsArray } from 'class-validator';
+import { StockInput } from 'src/stock/input/stock.input';
 
 @ObjectType()
 export class Warehouse {
@@ -18,7 +19,8 @@ export class Warehouse {
     @Field()
     updatedAt: Date;
 
-    @Field(() => [Stock])
-    stocks: Stock[];
+    @Field(() => [StockInput], { nullable: true })
+    @IsArray()
+    stocks: StockInput[];
 
 }

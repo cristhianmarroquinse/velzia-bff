@@ -3,7 +3,7 @@ import { WarehouseService } from './warehouse.service';
 import { Warehouse } from './models/warehouse.model';
 
 @Resolver(() => Warehouse)
-export class ProductResolver {
+export class WarehouseResolver {
   constructor(private readonly warehouseService: WarehouseService) {}
 
   @Query(() => [Warehouse])

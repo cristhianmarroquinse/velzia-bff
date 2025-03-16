@@ -2,16 +2,16 @@ import { ObjectType, Field, Int } from '@nestjs/graphql';
 
 @ObjectType()
 export class Stock {
-  @Field(type => Int)
+  @Field(() => Int)
   id: number;
 
-  @Field(type => Int)
+  @Field(() => Int)
   productId: number;
 
-  @Field(type => Int)
+  @Field(() => Int)
   warehouseId: number;
 
-  @Field(type => Int)
+  @Field(() => Int)
   quantity: number;
 
   @Field()
