@@ -19,7 +19,7 @@ enum StockMovementType {
 }
 
 model Product {
-  id          Int       @id @default(autoincrement())
+  id          Int      @id @default(autoincrement())
   reference   String
   name        String
   description String
@@ -27,40 +27,40 @@ model Product {
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
   stocks      Stock[]
-  stockMovements StockMovement[]
+
   @@unique([reference, barcode])
 }
 
 model Warehouse {
-  id          Int       @id @default(autoincrement())
-  name        String
-  address     String
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-  stocks      Stock[]
-  stockMovements StockMovement[]
+  id        Int      @id @default(autoincrement())
+  name      String
+  address   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  stocks    Stock[]
+
   @@unique([name])
 }
 
 model Stock {
-  id          Int       @id @default(autoincrement())
-  productId   Int
-  warehouseId Int
-  quantity    Int
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-  product     Product   @relation(fields: [productId], references: [id])
-  warehouse   Warehouse @relation(fields: [warehouseId], references: [id])
+  id             Int             @id @default(autoincrement())
+  productId      Int
+  warehouseId    Int
+  quantity       Int
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+  product        Product         @relation(fields: [productId], references: [id])
+  warehouse      Warehouse       @relation(fields: [warehouseId], references: [id])
+  stockMovements StockMovement[]
+
   @@unique([productId, warehouseId])
 }
 
 model StockMovement {
-  id          Int       @id @default(autoincrement())
-  warehouseId Int
-  productId   Int
-  quantity    Int
-  type        StockMovementType
-  createdAt   DateTime @default(now())
-  product    Product   @relation(fields: [productId], references: [id])
-  warehouse  Warehouse @relation(fields: [warehouseId], references: [id])
+  id        Int               @id @default(autoincrement())
+  stockId   Int
+  quantity  Int
+  type      StockMovementType
+  createdAt DateTime          @default(now())
+  stock     Stock             @relation(fields: [stockId], references: [id])
 }

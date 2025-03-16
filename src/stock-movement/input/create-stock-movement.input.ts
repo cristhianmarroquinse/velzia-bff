@@ -6,10 +6,7 @@ import { StockMovementType } from '@prisma/client';
 @InputType()
 export class CreateStockMovement {
     @Field()
-    productId: number;
-    
-    @Field()
-    warehouseId: number;
+    stockId: number;
     
     @Field()
     quantity: number;

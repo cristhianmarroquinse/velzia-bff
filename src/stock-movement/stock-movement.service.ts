@@ -8,7 +8,7 @@ export class StockMovementService {
   constructor(private readonly prisma: PrismaService) {}
 
   async createStockMovement(data: CreateStockMovement) {
-    const { productId, warehouseId, quantity, type } = data;
+    const { stockId, quantity, type } = data;
     return this.prisma.$transaction(async (prisma) => {
       // Create the StockMovement
       const stockMovement = await prisma.stockMovement.create({data});
@@ -16,10 +16,7 @@ export class StockMovementService {
       // Find the existing stock
       const stock = await prisma.stock.findUnique({
         where: {
-          productId_warehouseId: {
-            productId,
-            warehouseId,
-          },
+         id: stockId,
         },
       });
 

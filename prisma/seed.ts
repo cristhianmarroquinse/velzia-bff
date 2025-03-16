@@ -104,8 +104,7 @@ async function main() {
       // Create stock movement of type IN with the assigned quantity
       await prisma.stockMovement.create({
         data: {
-          productId: product.id,
-          warehouseId: warehouse.id,
+          stockId: stock.id,
           quantity: item.stock,
           type: StockMovementType.IN
         }
