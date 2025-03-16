@@ -2,6 +2,14 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+input CreateProductInput {
+  barcode: String!
+  description: String
+  name: String!
+  reference: String!
+  stocks: [StockInput!]
+}
+
 input CreateStockMovement {
   quantity: Float!
   stockId: Float!
@@ -14,7 +22,10 @@ A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date
 scalar DateTime
 
 type Mutation {
+  createProduct(data: CreateProductInput!): Product!
   createStockMovement(data: CreateStockMovement!): Boolean!
+  deleteProduct(id: Int!): Product!
+  updateProduct(data: UpdateProductInput!, id: Int!): Product!
 }
 
 type Product {
@@ -24,12 +35,14 @@ type Product {
   id: Int!
   name: String!
   reference: String!
-  stocks: [Stock!]!
+  stocks: [Stock!]
   updatedAt: DateTime!
 }
 
 type Query {
+  getProduct(id: Int!): Product!
   getProducts: [Product!]!
+  getWarehouses: [Warehouse!]!
 }
 
 type Stock {
@@ -39,4 +52,27 @@ type Stock {
   quantity: Int!
   updatedAt: DateTime!
   warehouseId: Int!
+}
+
+input StockInput {
+  id: Int!
+  productId: Int!
+  quantity: Int!
+  warehouseId: Int!
+}
+
+input UpdateProductInput {
+  barcode: String
+  description: String
+  name: String
+  reference: String
+}
+
+type Warehouse {
+  address: String!
+  createdAt: DateTime!
+  id: Int!
+  name: String!
+  stocks: [Stock!]
+  updatedAt: DateTime!
 }
