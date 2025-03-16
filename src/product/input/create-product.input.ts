@@ -1,5 +1,6 @@
 import { Field, InputType } from '@nestjs/graphql';
-import { IsString } from 'class-validator';
+import { Stock } from '../../stock/models/stock.model';
+import { IsArray, IsString } from 'class-validator';
 
 @InputType()
 export class CreateProductInput {
@@ -18,4 +19,8 @@ export class CreateProductInput {
   @Field()
   @IsString()
   barcode: string;
+
+  @Field(() => [Stock], { nullable: true })
+  @IsArray()
+  stocks: Stock[];
 }
