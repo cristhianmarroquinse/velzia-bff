@@ -38,7 +38,8 @@ async function main() {
     { reference: "000001791", name: "ALFOMBRA DE VISCOSA NOVA GRIS CLARO 300X400 CM", description: "ALFOMBRA DE VISCOSA NOVA GRIS CLARO 300X400 CM", barcode: "4099983052980" },
     { reference: "000001788", name: "ALFOMBRA EVE CREMA/BEIGE 160X230 CM", description: "ALFOMBRA EVE CREMA/BEIGE 160X230 CM", barcode: "4053894943676" },
     { reference: "10132", name: "ALFOMBRA EVE LINEAS BEIGE 160X230 CM", description: "ALFOMBRA EVE LINEAS BEIGE 160X230 CM", barcode: "4053894975110" },
-    { reference: "10133", name: "ALFOMBRA EVE LINEAS BEIGE 200X290 CM", description: "ALFOMBRA EVE LINEAS BEIGE 200X290 CM", barcode: "10133" }
+    { reference: "10133", name: "ALFOMBRA EVE LINEAS BEIGE 200X290 CM", description: "ALFOMBRA EVE LINEAS BEIGE 200X290 CM", barcode: "10133" },
+    { reference: "4068263006890", name: "TEST PRODUCT", description: "THIS IS A TEST", barcode: "4068263006890" }
   ];
 
   // Create warehouses
@@ -79,7 +80,8 @@ async function main() {
     { reference: "000001791", stock: 1, warehouse: "INT-ALFOMBRAS", barcode: "4099983052980" },
     { reference: "000001788", stock: 3, warehouse: "INT-ALFOMBRAS", barcode: "4053894943676" },
     { reference: "10132", stock: 3, warehouse: "INT-ALFOMBRAS", barcode: "4053894975110" },
-    { reference: "10133", stock: 3, warehouse: "INT-ALFOMBRAS", barcode: "10133" }
+    { reference: "10133", stock: 3, warehouse: "INT-ALFOMBRAS", barcode: "10133" },
+    { reference: "4068263006890", stock: 30, warehouse: "INT-ALFOMBRAS", barcode: "4068263006890" },
   ];
 
   for (const item of csvData) {
