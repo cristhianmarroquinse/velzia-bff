@@ -18,7 +18,7 @@ export class Warehouse {
     @Field()
     updatedAt: Date;
 
-    @Field(type => [Stock])
+    @Field(() => [Stock])
     stocks: Stock[];
 
 }
